@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Hero } from '../hero';
 
 @Component({
@@ -8,4 +8,9 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent {
   @Input() hero?: Hero;
+  @Output() UpdateNameEvent = new EventEmitter<string>();
+
+  updateHeroname(value: string) {
+    this.UpdateNameEvent.emit(value);
+  }
 }
