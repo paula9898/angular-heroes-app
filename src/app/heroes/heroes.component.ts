@@ -18,7 +18,7 @@ export class HeroesComponent {
   selectedHero?: Hero;
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+    this.heroes = this.heroService.getHeroes();
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
@@ -26,5 +26,8 @@ export class HeroesComponent {
   ngOnInit(): void {
     this.getHeroes();
   }
-  updateHeroname(newName: string) {}
+  updateHeroname(newName: string) {
+    var heroes = this.heroService.getHeroes();
+    var name = heroes.find((x) => x.id == this.selectedHero?.id)?.name;
+  }
 }
