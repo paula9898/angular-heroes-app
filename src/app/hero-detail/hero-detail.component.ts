@@ -8,9 +8,9 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent {
   @Input() hero?: Hero;
-  @Output() UpdateNameEvent = new EventEmitter<string>();
+  // @Output() editNameEvent = new EventEmitter<string>();
 
-  updateHeroname(value: string) {
-    this.UpdateNameEvent.emit(value);
-  }
+  // updateHeroname(value: string) {
+  //   this.editNameEvent.emit(value);
+  // }
 }
