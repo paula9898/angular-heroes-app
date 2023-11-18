@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../user.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,4 +9,8 @@ import { User } from '../user.model';
 })
 export class UserComponent {
   @Input() user!: User;
+
+  constructor(private route: ActivatedRoute) {
+    console.log(route.snapshot.data['name']);
+  }
 }

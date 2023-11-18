@@ -1,1 +1,9 @@
-<app-users></app-users>
+<div *ngIf="user">
+  <h2>{{ user.name | uppercase }} Details</h2>
+  <div>id : {{ user.id }}</div>
+  <div>{{ user.name }}</div>
+  <div>{{ user.username }}</div>
+  <div>{{ user.email }}</div>
+  <div>{{ user.phone }}</div>
+  <div>{{ user.website }}</div>
+</div>
