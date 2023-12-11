@@ -1,4 +1,4 @@
-<div *ngIf="user">
+<div *ngIf="user$ | async as user">
   <h2>{{ user.name | uppercase }} Details</h2>
   <div>id : {{ user.id }}</div>
   <div>{{ user.name }}</div>
@@ -7,3 +7,4 @@
   <div>{{ user.phone }}</div>
   <div>{{ user.website }}</div>
 </div>
+{{ user$ | async | json }}

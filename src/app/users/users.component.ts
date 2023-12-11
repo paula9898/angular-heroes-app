@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,12 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class UsersComponent {
   selectedUser$!: Observable<User>;
+  selecteduser?: User;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   users$ = this.userService.getUsers();
 
-  OnSelect(userId: number): void {
-    this.selectedUser$ = this.userService.getUserById(userId);
+  onButtonClicked(id: number): void {
+    this.router.navigate(['/user', id]);
   }
 }

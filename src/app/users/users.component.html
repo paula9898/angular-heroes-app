@@ -5,17 +5,19 @@
       type="button"
       (click)="OnSelect(user.id)"
     > -->
-    <span class="name">{{ user.name }}</span>
+    <!-- <span class="name">{{ user.name }}</span>
     <span class="name">{{ user.username }}</span>
     <button
-      (click)="(onButtonClicked)"
+      (click)="onButtonClicked(user.id)"
       mat-raised-button
       class="btn btn-primary"
     >
       <span>Detail</span>
     </button>
   </li>
-</ul>
-<!-- <app-user *ngIf="selectedUser$ | async as selectedUser" [user]="selectedUser">
+</ul> -->
+    <!-- <app-user *ngIf="selectedUser$ | async as selectedUser" [user]="selectedUser">
   -->
-<!-- </app-user> -->
+    <!-- </app-user> -->
+  </li>
+</ul>
