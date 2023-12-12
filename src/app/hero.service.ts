@@ -21,10 +21,10 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
-  async getAllHeroes(): Promise<Hero[]> {
-    const data = await fetch(this.url);
-    return (await data.json()) ?? [];
-  }
+  // async getAllHeroes(): Promise<Hero[]> {
+  //   const data = await fetch(this.url);
+  //   return (await data.json()) ?? [];
+  // }
 
   getHero(id: number): Observable<Hero> {
     // For now, assume that a hero with the specified `id` always exists.
@@ -36,5 +36,9 @@ export class HeroService {
 
   create(hero: Hero): Observable<Hero> {
     return this.httpClient.post<Hero>('http://localhost:3000/hero', hero);
+  }
+
+  getAll(): Observable<Hero[]> {
+    return this.httpClient.get<Hero[]>('http://localhost:3000/hero');
   }
 }

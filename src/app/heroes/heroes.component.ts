@@ -23,7 +23,7 @@ export class HeroesComponent implements OnInit {
   selectedHero?: Hero;
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes)); //method calls the getHeroes() method of HeroService to retrive a ölist of heros
+    this.heroService.getAll().subscribe((heroes) => (this.heroes = heroes)); //method calls the getHeroes() method of HeroService to retrive a ölist of heros
     // it uses subscribe method to listen for the asynch response and updates the heroes proeprty when the data is recived
   }
   onSelect(hero: Hero): void {
@@ -31,6 +31,10 @@ export class HeroesComponent implements OnInit {
     this.messageService.add('HeroesComponent: Selected hero id=${hero.id}');
   }
   ngOnInit(): void {
-    this.getHeroes();
+    this.load();
+  }
+
+  load(): void {
+    this.heroService.getAll().subscribe((result) => (this.heroes = result));
   }
 }

@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    DxButtonModule,
+    DxDataGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

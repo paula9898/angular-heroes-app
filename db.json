@@ -3,6 +3,18 @@
     {
       "id": 1,
       "name": "Pimpus"
+    },
+    {
+      "id": 2,
+      "name": "Puchatek"
+    },
+    {
+      "id": 3,
+      "name": "Mechanik"
+    },
+    {
+      "id": 4,
+      "name": "Mechanik"
     }
   ]
 }

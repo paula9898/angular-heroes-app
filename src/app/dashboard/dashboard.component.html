@@ -1,4 +1,4 @@
-<h2>Top Heroes</h2>
+<h2>Top3 Heroes</h2>
 <div class="heroes-menu">
   <a *ngFor="let hero of heroes" routerLink="/detail/{{ hero.id }}">
     {{ hero.name }} &nbsp;
@@ -21,3 +21,6 @@
 >
   Add and Save
 </button>
+<ul>
+  <li *ngFor="let hero of heroes">{{ hero.id }} {{ hero.name }} &nbsp;</li>
+</ul>

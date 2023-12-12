@@ -19,22 +19,38 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    // this.getHeroes();
+    // this.load();
+    this.loadTop3();
   }
 
-  getHeroes(): void {
-    this.heroService
-      .getHeroes()
-      .subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
-  }
+  // getHeroes(): void {
+  //   this.heroService
+  //     .getHeroes()
+  //     .subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
+  // }
   // async getAllHeroes(): Promise<Hero[]> {
   //   const data = await fetch(this.url);
   //   return (await data.json()) ?? [];
   // }
+  load(): void {
+    this.heroService.getAll().subscribe((result) => (this.heroes = result));
+  }
+
+  loadTop3(): void {
+    this.heroService
+      .getAll()
+      .subscribe((result) => (this.heroes = result.slice(0, 3)));
+  }
 
   onSave(): void {
     console.log(this.form.value);
     if (this.form.invalid) {
+      alert('invalid');
+    } else {
+      this.heroService
+        .create(this.form.value)
+        .subscribe((result) => this.loadTop3());
     }
   }
 }
