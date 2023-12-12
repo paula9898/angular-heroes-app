@@ -4,31 +4,22 @@
 
 <h2>My Heroes</h2>
 
-<!-- <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <a routerLink="/detail/{{ hero.id }}">
-        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
-      </a>
-    </li>
-  </ul> -->
-
-<div class="heroes">
-  <ul>
-    <li *ngFor="let hero of heroes">
-      {{ hero.id }}
-      {{ hero.name }}
-    </li>
-  </ul>
-</div>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{ hero.id }}">
+      <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+    </a>
+  </li>
+</ul>
 <dx-data-grid
   id="gridContainer"
   [dataSource]="heroes"
   keyExpr="id"
   [columns]="['id', 'name']"
   [showBorders]="true"
-  [allowColumnResizing]="true"
-  [columnAutoWidth]="true"
 >
+  <dxi-column dataField="id" [width]="50"> </dxi-column>
+  <dxi-column dataField="name" [width]="100"> </dxi-column>
   >
 </dx-data-grid>
 
