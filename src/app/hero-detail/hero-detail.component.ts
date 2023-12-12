@@ -1,15 +1,15 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Hero } from '../hero';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Location } from '@angular/common';
+import { Hero } from './hero';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css'],
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
   // @Output() editNameEvent = new EventEmitter<string>();
 
@@ -35,4 +35,6 @@ export class HeroDetailComponent {
   goBack(): void {
     this.location.back();
   }
+
+  onHeroSelected(selectedHero: Hero) {}
 }

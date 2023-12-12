@@ -1,6 +1,23 @@
 <h2>Top Heroes</h2>
 <div class="heroes-menu">
   <a *ngFor="let hero of heroes" routerLink="/detail/{{ hero.id }}">
-    {{ hero.name }}
+    {{ hero.name }} &nbsp;
+    <br />
   </a>
 </div>
+
+<form [formGroup]="form">
+  <div class="wrapper">
+    <h2>Create new hero</h2>
+    <label for="name">Name</label>
+    <input formControlName="name" type="text" id="name" />
+  </div>
+</form>
+<button
+  mat-stroked-button
+  color="primary"
+  [attr.disabled]="form.valid ? null : 'disabled'"
+  (click)="onSave()"
+>
+  Add and Save
+</button>

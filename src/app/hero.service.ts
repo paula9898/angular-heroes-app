@@ -1,43 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './hero';
+
+import { Observable, of } from 'rxjs';
+
 import { HEROES } from './mock-heroes';
-import { Observable, catchError, of, tap } from 'rxjs';
 import { MessageService } from './message.service';
+import { Hero } from './hero-detail/hero';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class HeroService {
-  [x: string]: any;
-  private heroesUrl = 'api/heroes'; // URL to web api
+  url = 'http://localhost:3000/hero';
 
   constructor(
     private messageService: MessageService,
-    private http: HttpClient
+    private httpClient: HttpClient
   ) {}
 
-  // getHeroes(): Observable<Hero[]> {
-  //   this.messageService.add('HeroService: fetched heroes');
-  //   const heroes = of(HEROES);
-  //   return heroes;
-  //   // return HEROES;
-  // }
-
-  /** GET heroes from the server */
-  // getHeroes(): Observable<Hero[]> {
-  //   return this.http.get<Hero[]>(this.heroesUrl);
-  // }
-
-  // getHero(id: number): Observable<Hero> {
-  //   const hero = HEROES.find((h) => h.id === id)!;
-  //   return of(hero);
-  // }
-
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap((_) => this.log('fetched heroes')),
-      catchError(this.handleError<Hero[]>('getHeroes', []))
-    );
+    const heroes = of(HEROES);
+    this.messageService.add('HeroService: fetched heroes');
+    return heroes;
+  }
+  async getAllHeroes(): Promise<Hero[]> {
+    const data = await fetch(this.url);
+    return (await data.json()) ?? [];
+  }
+
+  getHero(id: number): Observable<Hero> {
+    // For now, assume that a hero with the specified `id` always exists.
+    // Error handling will be added in the next step of the tutorial.
+    const hero = HEROES.find((h) => h.id === id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
+  }
+
+  create(hero: Hero): Observable<Hero> {
+    return this.httpClient.post<Hero>('http://localhost:3000/hero', hero);
   }
 }

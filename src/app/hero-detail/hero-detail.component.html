@@ -1,9 +1,8 @@
 <div *ngIf="hero">
   <h2>{{ hero.name | uppercase }} Details</h2>
   <div>id : {{ hero.id }}</div>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name" #newName />
   <div>
-    <label for="name"> Hero name:</label>
-    <input id="name" [(ngModel)]="hero.name" placeholder="name" #newName />
     <!-- <button type="button" (click)="updateHeroname(newName.value)">Save</button> -->
   </div>
 </div>
