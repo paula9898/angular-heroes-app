@@ -35,7 +35,11 @@ export class HeroService {
   }
 
   create(hero: Hero): Observable<Hero> {
-    return this.httpClient.post<Hero>('http://localhost:3000/hero', hero);
+    return this.httpClient.post<Hero>('http://localhost:3000/hero/', hero);
+  }
+
+  get(id: number): Observable<Hero> {
+    return this.httpClient.get<Hero>('http://localhost:3000/hero/' + id);
   }
 
   getAll(): Observable<Hero[]> {

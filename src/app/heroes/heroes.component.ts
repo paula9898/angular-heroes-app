@@ -10,6 +10,8 @@ import { Hero } from '../hero-detail/hero';
   styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
   constructor(
     private heroService: HeroService,
     private messageService: MessageService
@@ -19,8 +21,6 @@ export class HeroesComponent implements OnInit {
   //   id: 1,
   //   name: 'Windstorm',
   // };
-  heroes: Hero[] = [];
-  selectedHero?: Hero;
 
   getHeroes(): void {
     this.heroService.getAll().subscribe((heroes) => (this.heroes = heroes)); //method calls the getHeroes() method of HeroService to retrive a ölist of heros
