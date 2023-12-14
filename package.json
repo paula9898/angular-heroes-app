@@ -19,7 +19,6 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "angular-in-memory-web-api": "^0.17.0",
     "devextreme": "23.1.6",
     "devextreme-angular": "23.1.6",
     "devextreme-schematics": "^1.6.4",
